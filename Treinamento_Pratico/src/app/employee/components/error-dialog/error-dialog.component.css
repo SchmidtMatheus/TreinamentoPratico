@@ -1,0 +1,14 @@
+mat-dialog-content{
+  background-color: rgba(32, 32, 35, 1);
+  border: none;
+  color: orange;
+}
+
+mat-dialog-actions{
+  display: flex;
+  background-color: rgba(32, 32, 35, 1);
+  border: none;
+  color: orange;
+  align-items: flex-end;
+  justify-content: right;
+}

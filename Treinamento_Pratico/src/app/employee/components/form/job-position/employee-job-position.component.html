@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-toolbar>
+      <mat-icon (click)="onBack()">arrow_back_ios</mat-icon>
+
+    <h1>Cargo</h1>
+
+  </mat-toolbar>
+
+    <mat-card-content>
+
+      <form [formGroup]="formJobPosition" class="full-width">
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Nome do cargo" formControlName="name">
+      </mat-form-field>
+      </form>
+
+    </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-stroked-button (click)="onClear()">Limpar</button>
+    <button mat-stroked-button (click)="onSubmit()" class="salvar" >Salvar</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,111 @@
+<mat-card>
+  <mat-toolbar>
+    <mat-icon (click)="onBack()">arrow_back_ios</mat-icon>
+
+    <h1>Funcionário</h1>
+
+  </mat-toolbar>
+
+  <mat-card-content>
+
+    <form [formGroup]="form" class="full-width">
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Nome do funcionário" formControlName="name" autocomplete="off" required>
+        <mat-error *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="alert alert-danger">
+          <mat-error *ngIf="form.get('name')?.hasError('required')" class="alert alert-danger">
+            {{getErrorMessage(form.get('name'))}}
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Documento de identidade" maxlength="11" minlength="11"
+          formControlName="nationalIdentity" autocomplete="off" required>
+        <mat-error *ngIf="form.get('nationalIdentity')?.invalid && form.get('nationalIdentity')?.touched"
+          class="alert alert-danger">
+          <mat-error *ngIf="form.get('nationalIdentity')?.hasError('required')" class="alert alert-danger">
+            {{getErrorMessage(form.get('nationalIdentity'))}}
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="half-width-left">
+        <mat-label>Empresa</mat-label>
+        <mat-select formControlName="clientId" required>
+          <mat-option *ngFor="let client of clientList" [value]="client.id">
+            {{client.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('clientId')?.invalid && form.get('clientId')?.touched" class="alert alert-danger">
+          <mat-error *ngIf="form.get('clientId')?.hasError('required')" class="alert alert-danger">
+            {{getErrorMessage(form.get('clientId'))}}
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="half-width-right">
+        <mat-label>Cargo</mat-label>
+        <mat-select formControlName="jobPositionId" required>
+          <mat-option *ngFor="let jobPosition of jobPositionList" [value]="jobPosition.id">
+            {{jobPosition.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('jobPositionId')?.invalid && form.get('jobPositionId')?.touched"
+          class="alert alert-danger">
+          <mat-error *ngIf="form.get('jobPositionId')?.hasError('required')" class="alert alert-danger">
+            {{getErrorMessage(form.get('jobPositionId'))}}
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="half-width-left">
+        <input matInput type="number" placeholder="Salário" formControlName="salary" autocomplete='off' required>
+        <span matPrefix>R$&nbsp;</span>
+        <span matSuffix>,00&nbsp;</span>
+        <mat-error *ngIf="form.get('salary')?.invalid && form.get('salary')?.touched" class="alert alert-danger">
+          <mat-error *ngIf="form.get('salary')?.hasError('required')" class="alert alert-danger">
+            {{getErrorMessage(form.get('salary'))}}
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="half-width-right">
+        <mat-label>Tipo de contrato</mat-label>
+        <mat-select formControlName="typeEmployee" required>
+          <mat-option value="EMPLOYEE">1 - EMPLOYEE</mat-option>
+          <mat-option value="INTERN">2 - INTERN</mat-option>
+          <mat-option value="PARTNER">3 - PARTNER</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('typeEmployee')?.invalid && form.get('typeEmployee')?.touched"
+          class="alert alert-danger">
+          <mat-error *ngIf="form.get('typeEmployee')?.hasError('required')" class="alert alert-danger">
+            {{getErrorMessage(form.get('typeEmployee'))}}
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-checkbox class="half-width-left" formControlName="active">Funcionário ativo</mat-checkbox>
+
+      <mat-form-field class="half-width-right">
+        <mat-label>Data de Nascimento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="birthdate" autocomplete="off" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('birthdate')?.invalid && form.get('birthdate')?.touched"
+        class="alert alert-danger">
+        <mat-error *ngIf="form.get('birthdate')?.hasError('required')" class="alert alert-danger">
+          {{getErrorMessage(form.get('birthdate'))}}
+        </mat-error>
+      </mat-error>
+      </mat-form-field>
+
+    </form>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-stroked-button (click)="onClear()">Limpar</button>
+    <button mat-stroked-button (click)="onSubmit()" class="salvar">Salvar</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,102 @@
+<mat-card>
+  <mat-toolbar>
+    <mat-icon (click)="onBack()">arrow_back_ios</mat-icon>
+
+    <h1>Afastamento de Funcionário</h1>
+
+  </mat-toolbar>
+
+  <mat-card-content>
+
+    <form [formGroup]="form" class="full-width">
+
+      <mat-form-field class="full-width" required>
+        <mat-label>Funcionário</mat-label>
+        <mat-select formControlName="employeeId">
+          <mat-option *ngFor="let employee of employeeList" [value]="employee.id">
+            {{employee.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('employeeId')?.invalid && form.get('employeeId')?.touched"
+          class="alert alert-danger">
+          <mat-error *ngIf="form.get('employeeId')?.hasError('required')" class="alert alert-danger">
+            {{getErrorMessage(form.get('employeeId'))}}
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="half-width-left">
+        <mat-label>Empresa</mat-label>
+        <mat-select formControlName="clientId">
+          <mat-option *ngFor="let client of clientList" [value]="client.id">
+            {{client.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('clientId')?.invalid && form.get('clientId')?.touched" class="alert alert-danger">
+          <mat-error *ngIf="form.get('clientId')?.hasError('required')" class="alert alert-danger">
+            {{getErrorMessage(form.get('clientId'))}}
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="half-width-right" required>
+        <mat-label>Tipo de afastamento</mat-label>
+        <mat-select formControlName="leaveType">
+          <mat-option value="MATERNITY_LEAVE">1 - LICENÇA MATERNIDADE</mat-option>
+          <mat-option value="PATERNITY_LEAVE">2 - LICENÇA PATERNIDADE</mat-option>
+          <mat-option value="WORK_INJURY">3 - ACIDENTE DE TRABALHO</mat-option>
+          <mat-option value="VACATION">4 - FÉRIAS</mat-option>
+          <mat-option value="TERMINATION">5 - DESLIGAMENTO</mat-option>
+          <mat-option value="CONTRIBUTORS_DEATH">6 - MORTE</mat-option>
+          <mat-option value="OTHERS">7 - OUTROS</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('leaveType')?.invalid && form.get('leaveType')?.touched" class="alert alert-danger">
+          <mat-error *ngIf="form.get('leaveType')?.hasError('required')" class="alert alert-danger">
+            {{getErrorMessage(form.get('leaveType'))}}
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="half-width-left">
+        <mat-label>Início do afastamento</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="leaveDate" autocomplete="off">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('leaveDate')?.invalid && form.get('leaveDate')?.touched" class="alert alert-danger">
+          <mat-error *ngIf="form.get('leaveDate')?.hasError('required')" class="alert alert-danger">
+            {{getErrorMessage(form.get('leaveDate'))}}
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="half-width-right">
+        <input matInput type="number" placeholder="Dias afastado" maxlength="3" formControlName="numberDays"
+          autocomplete="off">
+        <span matSuffix>dias&nbsp;</span>
+      </mat-form-field>
+
+      <mat-form-field class="half-width-left">
+        <mat-label>Data de retorno</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="returnDate">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="half-width-right">
+        <mat-label>Classe de afastamento</mat-label>
+        <mat-select formControlName="type">
+          <mat-option value="TYPICAL">1 - TÍPICO</mat-option>
+          <mat-option value="PROFESSIONAL_DISEASE_OR_FROM_WORK">2 - DOENÇA PROFISSIONAL</mat-option>
+          <mat-option value="COMMUTING_ACCIDENT">3 - TRAJETO</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </form>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-stroked-button (click)="onClear()">Limpar</button>
+    <button mat-stroked-button (click)="onSubmit()" class="salvar">Salvar</button>
+  </mat-card-actions>
+</mat-card>

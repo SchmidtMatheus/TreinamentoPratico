@@ -1,0 +1,60 @@
+table{
+  width: 100%;
+}
+
+.full-width{
+  width: 95%;
+  padding-left: 2.5%;
+}
+
+.half-width-left{
+  width: 40%;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+.half-width-right{
+  width: 40%;
+  padding-left: 2.5%;
+}
+
+mat-card{
+max-width: fit-content;
+margin: 1em auto;
+}
+
+mat-toolbar{
+  background-color: orange;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+mat-checkbox{
+  margin-top: 1em;
+}
+
+mat-datepicker{
+  margin-top: 1em;
+}
+
+mat-card-actions{
+  text-align: right;
+  padding-right: 5%;
+}
+
+.salvar{
+  color: white;
+  background-color: orange;
+}
+
+mat-icon{
+  background-color: orange;
+  margin-right: 1em;
+}
+
+mat-icon:hover{
+  color: rgba(32, 32, 35, 1);
+}
+
+
+

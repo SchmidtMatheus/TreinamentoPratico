@@ -1,0 +1,39 @@
+<header>
+  <mat-toolbar>
+
+    <mat-toolbar-row class="first-toolbar">
+      <button mat-icon-button class="menu-icon" aria-label="Vertical menu">
+        <mat-icon (click)="onAddEmployee()">home</mat-icon>
+      </button>
+      <span>Tela do Funcionário</span>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="second-toolbar">
+
+      <button mat-flat-button [matMenuTriggerFor]="menuClient" class="Guide">Empresa</button>
+        <mat-menu #menuClient="matMenu">
+          <button mat-flat-button (click)="onAddClient()" class="AddClient">Lista de Empresas</button>
+        </mat-menu>
+
+        <button mat-flat-button [matMenuTriggerFor]="menuJobPosition" class="Guide">Cargo</button>
+        <mat-menu #menuJobPosition="matMenu">
+          <button mat-flat-button (click)="onAddJobPosition()" class="AddJobPosition">Lista de Cargos</button>
+        </mat-menu>
+
+        <button mat-flat-button [matMenuTriggerFor]="menuEmployee" class="Guide">Funcionário</button>
+        <mat-menu #menuEmployee="matMenu">
+          <button mat-flat-button (click)="onAddEmployee()" class="AddEmployee">Lista de Funcionários</button>
+          <button mat-flat-button (click)="onAddEmployeeLeave()" class="AddEmployee">Afastamento de Funcionário</button>
+        </mat-menu>
+
+    </mat-toolbar-row>
+
+  </mat-toolbar>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer>
+</footer>

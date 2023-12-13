@@ -1,0 +1,31 @@
+.menu-icon{
+  padding-right: 1em;
+  background-color: rgba(32, 32, 35, 1);
+}
+
+.first-toolbar{
+  background-color: rgba(32, 32, 35, 1);
+  border: none;
+}
+
+.second-toolbar{
+  background-color: rgba(55, 56, 61, 1);
+  border: none;
+  color: #FA6400;
+}
+
+.Guide{
+  color: #FA6400;
+  background-color: rgba(55, 56, 61, 1);
+}
+
+button{
+  color: #FA6400;
+}
+button:hover{ background-color: #FA6400; color: rgba(55, 56, 61, 1);}
+
+.menu-icon:hover{
+  background-color: rgba(32, 32, 35, 1);
+  border: none;
+  color: #FA6400;
+}
